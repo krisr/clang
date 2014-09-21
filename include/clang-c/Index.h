@@ -3101,6 +3101,12 @@ CINDEX_LINKAGE unsigned clang_isVolatileQualifiedType(CXType T);
 CINDEX_LINKAGE unsigned clang_isRestrictQualifiedType(CXType T);
 
 /**
+ *  \determine Determine whether a cursor represents a declaration for an
+ *  abstract C++ class.
+ */
+CINDEX_LINKAGE unsigned clang_isAbstractClassCursor(CXCursor C);
+
+/**
  * \brief For pointer types, returns the type of the pointee.
  */
 CINDEX_LINKAGE CXType clang_getPointeeType(CXType T);
