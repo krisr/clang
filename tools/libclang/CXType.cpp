@@ -346,6 +346,15 @@ unsigned clang_isRestrictQualifiedType(CXType CT) {
   return T.isLocalRestrictQualified();
 }
 
+unsigned clang_isAbstractClassCursor(CXCursor C) {
+  if (clang_isDeclaration(C.kind)) {
+    const Decl *D = cxcursor::getCursorDecl(C);
+    if (const CXXRecordDecl *TD = dyn_cast<CXXRecordDecl>(D))
+      return TD->isAbstract();
+  }
+  return false;
+}
+
 CXType clang_getPointeeType(CXType CT) {
   QualType T = GetQualType(CT);
   const Type *TP = T.getTypePtrOrNull();
